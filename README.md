@@ -1,9 +1,5 @@
 # Capistrano::Logrotate
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/capistrano/logrotate`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
-
 ## Installation
 
 Add this line to your application's Gemfile:
@@ -22,7 +18,21 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+```ruby
+# Capfile
+
+require 'capistrano/logrotate'
+```
+
+then you can use `cap logrotate:config'
+
+Configurable options, shown here with defaults: Please note the configuration options below are not required unless you are trying to override a default setting
+
+```ruby
+set :logrotate_role, :app
+set :logrotate_conf_path, -> { File.join('/etc', 'logrotate.d', "#{fetch(:application)}_#{fetch(:stage)}") }
+set :logrotate_log_path, -> { File.join(shared_path, 'log') }
+```
 
 ## Development
 
