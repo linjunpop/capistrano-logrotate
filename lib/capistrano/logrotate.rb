@@ -1,7 +1,1 @@
-require "capistrano/logrotate/version"
-
-module Capistrano
-  module Logrotate
-    # Your code goes here...
-  end
-end
+load File.expand_path('../tasks/logrotate.rake', __FILE__)

@@ -1,0 +1,12 @@
+<%= fetch(:logrotate_log_path) %>/*.log {
+    daily
+    rotate 52
+
+    missingok
+    compress
+    delaycompress
+    notifempty
+    copytruncate
+
+    su <%= fetch(:user) %>
+}
