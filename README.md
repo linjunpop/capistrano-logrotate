@@ -1,5 +1,8 @@
 # Capistrano::Logrotate
 
+[![Code Climate](http://img.shields.io/codeclimate/github/linjunpop/capistrano-logrotate.svg)](https://codeclimate.com/github/linjunpop/capistrano-logrotate)
+[![Gem Version](http://img.shields.io/gem/v/capistrano-logrotate.svg)](https://rubygems.org/gems/capistrano-logrotate)
+
 ## Installation
 
 Add this line to your application's Gemfile:
