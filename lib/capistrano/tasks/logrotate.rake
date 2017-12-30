@@ -3,6 +3,7 @@ namespace :load do
     set :logrotate_role, :app
     set :logrotate_conf_path, -> { File.join('/etc', 'logrotate.d', "#{fetch(:application)}_#{fetch(:stage)}") }
     set :logrotate_log_path, -> { File.join(shared_path, 'log') }
+    set :logrotate_logs_keep, -> { 12 }
   end
 end
 

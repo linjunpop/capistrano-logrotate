@@ -35,6 +35,7 @@ Configurable options, shown here with defaults: Please note the configuration op
 set :logrotate_role, :app
 set :logrotate_conf_path, -> { File.join('/etc', 'logrotate.d', "#{fetch(:application)}_#{fetch(:stage)}") }
 set :logrotate_log_path, -> { File.join(shared_path, 'log') }
+set :logrotate_logs_keep, -> { 12 }
 ```
 
 ## Development
@@ -46,4 +47,3 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 ## Contributing
 
 Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/capistrano-logrotate.
-
