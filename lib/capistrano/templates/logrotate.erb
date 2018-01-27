@@ -8,5 +8,5 @@
     notifempty
     copytruncate
 
-    su <%= fetch(:user) %>
+    su <%= fetch(:logrotate_user) %> <%= fetch(:logrotate_group) %>
 }
