@@ -1,5 +1,5 @@
 <%= fetch(:logrotate_log_path) %>/*.log {
-    daily
+    <%= fetch(:logrotate_interval) %>
     rotate <%= fetch(:logrotate_logs_keep) %>
 
     missingok
