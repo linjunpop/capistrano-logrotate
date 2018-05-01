@@ -39,6 +39,7 @@ set :logrotate_logs_keep, -> { 12 }
 set :logrotate_interval, -> { 'daily' }
 set :logrotate_user, -> { fetch(:user) }
 set :logrotate_group, -> { fetch(:user) }
+set :logrotate_template_path, -> { :default }
 ```
 
 ## Development

@@ -7,6 +7,7 @@ namespace :load do
     set :logrotate_interval, -> { 'daily' }
     set :logrotate_user, -> { fetch(:user) }
     set :logrotate_group, -> { fetch(:user) }
+    set :logrotate_template_path, -> { :default }
   end
 end
 
@@ -19,10 +20,13 @@ namespace :logrotate do
   end
 
   def upload_logrotate_template
-    path = File.expand_path("../../templates/logrotate.erb", __FILE__)
+    logrotate_template_path = fetch(:logrotate_template_path)
+    if logrotate_template_path == :default
+      logrotate_template_path = File.expand_path("../../templates/logrotate.erb", __FILE__)
+    end
 
-    if File.file?(path)
-      erb = File.read(path)
+    if File.file?(logrotate_template_path)
+      erb = File.read(logrotate_template_path)
       config_path = File.join(shared_path, 'logrotate_conf')
       upload! StringIO.new(ERB.new(erb).result(binding)), config_path
       sudo :mv, config_path, fetch(:logrotate_conf_path)
