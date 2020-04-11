@@ -27,7 +27,7 @@ namespace :logrotate do
 
     if File.file?(logrotate_template_path)
       erb = File.read(logrotate_template_path)
-      config_path = File.join(shared_path, 'logrotate_conf')
+      config_path = File.join(fetch(:tmp_dir), 'logrotate_conf')
       upload! StringIO.new(ERB.new(erb).result(binding)), config_path
       sudo :mv, config_path, fetch(:logrotate_conf_path)
       sudo :chown, "root:root", fetch(:logrotate_conf_path)
